@@ -6,7 +6,9 @@ Animal VS is a full-stack educational web app that compares reference body masse
 
 **Code:** https://github.com/diegosecor/HW4-animal-vs
 
-The public deployment link will be added after the backend is deployed to Render.
+**Live site:** https://diegosecor.github.io/HW4-animal-vs/
+
+The frontend communicates with the deployed backend on Render.
 
 ## Overview
 
