@@ -8,6 +8,8 @@ Animal VS is a full-stack educational web app that compares reference body masse
 
 **Live site:** https://diegosecor.github.io/HW4-animal-vs/
 
+**Backend API:** https://hw4-animal-vs-backend.onrender.com
+
 The frontend communicates with the deployed backend on Render.
 
 ## Overview
@@ -23,6 +25,7 @@ For example, typing `dog` offers **Domestic Dog — 30 kg**; typing `tiger`, `wh
 - **`GET /api/animals/search?q=...`** as a visitor types, to retrieve matching catalog animals with their reference masses.
 - **`GET /api/compare?first=...&second=...`** after two suggestions are selected, to receive the body-mass comparison and live iNaturalist species cards.
 - **`GET /api/popular-comparisons?limit=5`** on page load and after successful comparisons, to show the most searched matchups.
+- **`GET /api/popular-animals?limit=5`** on page load and after successful comparisons, to show the five animals appearing most often in completed comparisons.
 
 The autocomplete supports mouse selection or arrow keys, Enter, and Escape. It prevents free text from being used as an invalid comparison.
 

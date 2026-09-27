@@ -14,6 +14,7 @@ const resultTitle = document.querySelector("#result-title");
 const resultDetail = document.querySelector("#result-detail");
 const cards = document.querySelector("#animal-cards");
 const popularList = document.querySelector("#popular-list");
+const popularAnimalsList = document.querySelector("#popular-animals-list");
 const autocompleteStates = new Map();
 
 function showMessage(text, isError = false) {
@@ -285,6 +286,45 @@ async function loadPopularComparisons() {
   }
 }
 
+function renderPopularAnimals(animals) {
+  popularAnimalsList.replaceChildren();
+  if (animals.length === 0) {
+    const emptyState = document.createElement("li");
+    emptyState.className = "popular-empty";
+    emptyState.textContent = "No animal activity yet. Complete a comparison to start the ranking.";
+    popularAnimalsList.append(emptyState);
+    return;
+  }
+  for (const [index, entry] of animals.entries()) {
+    const item = document.createElement("li");
+    item.className = "popular-item";
+    const rank = document.createElement("span");
+    rank.className = "popular-rank";
+    rank.textContent = String(index + 1).padStart(2, "0");
+    const animal = document.createElement("span");
+    animal.className = "popular-matchup";
+    animal.textContent = entry.animal.name;
+    const count = document.createElement("span");
+    count.className = "popular-count";
+    count.textContent = `${formatNumber(entry.count)} ${entry.count === 1 ? "appearance" : "appearances"}`;
+    item.append(rank, animal, count);
+    popularAnimalsList.append(item);
+  }
+}
+
+async function loadPopularAnimals() {
+  try {
+    const data = await getJson("/api/popular-animals?limit=5");
+    renderPopularAnimals(data.animals);
+  } catch {
+    popularAnimalsList.replaceChildren();
+    const errorState = document.createElement("li");
+    errorState.className = "popular-empty";
+    errorState.textContent = "Individual animal data is unavailable right now.";
+    popularAnimalsList.append(errorState);
+  }
+}
+
 form.addEventListener("submit", async (event) => {
   event.preventDefault();
   result.hidden = true;
@@ -308,6 +348,7 @@ form.addEventListener("submit", async (event) => {
     showMessage("");
     showResult(data);
     loadPopularComparisons();
+    loadPopularAnimals();
   } catch (error) {
     showMessage(error instanceof TypeError ? "No connection to backend. Please try again." : error.message, true);
   } finally {
@@ -326,3 +367,4 @@ swapButton.addEventListener("click", () => {
 setupAutocomplete(firstInput, firstSuggestions);
 setupAutocomplete(secondInput, secondSuggestions);
 loadPopularComparisons();
+loadPopularAnimals();
