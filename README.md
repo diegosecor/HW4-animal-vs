@@ -1,5 +1,13 @@
 # Animal VS · Frontend
 
+## Portfolio Description
+
+Animal VS is a full-stack educational web app that compares reference body masses for more than 60 animals. The frontend provides searchable animal selection, comparison results, popular matchups, and live species cards powered by iNaturalist data.
+
+**Code:** https://github.com/diegosecor/HW4-animal-vs
+
+The public deployment link will be added after the backend is deployed to Render.
+
 ## Overview
 
 This static HTML, CSS, and JavaScript page compares animals by rounded educational reference mass. It offers a custom type-ahead menu backed by a curated catalog of more than 60 animals, including domestic animals, wildlife, birds, reptiles, marine animals, and invertebrates.
