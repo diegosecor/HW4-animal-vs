@@ -1,5 +1,4 @@
-// Replace this URL with your Render service URL before publishing on GitHub Pages.
-const API_BASE = "http://127.0.0.1:5000";
+const API_BASE = "https://hw4-animal-vs-backend.onrender.com";
 const SEARCH_DELAY_MS = 180;
 
 const form = document.querySelector("#compare-form");
