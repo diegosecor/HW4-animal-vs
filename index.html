@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#112d24">
+  <title>Animal VS — How many does it take?</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="Animal VS, home"><span class="brand-icon">✳</span> Animal<span>VS</span></a>
+      <span class="top-label">WILDLIFE FIELD NOTES · 01</span>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="page-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="dot"></span> EXPLORE · COMPARE · BE AMAZED</p>
+          <h1 id="page-title">The animal kingdom,<br><em>face to face.</em></h1>
+          <p class="intro">Search a large curated animal catalog, choose two species, and discover unexpected body-mass equivalences.</p>
+        </div>
+        <div class="hero-mark" aria-hidden="true"><span>VS</span></div>
+      </section>
+
+      <section class="compare-panel" aria-labelledby="compare-title">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow dark">MASS REFERENCE CATALOG</p>
+            <h2 id="compare-title">Build Your Match</h2>
+          </div>
+          <span class="stat-chip">⚖ Body Mass</span>
+        </div>
+
+        <form id="compare-form">
+          <div class="selection-grid">
+            <div class="selector-block">
+              <label for="first">ANIMAL 01</label>
+              <div class="animal-search-wrap">
+                <input id="first" class="animal-search" name="first" type="text" placeholder="Search the catalog, e.g. dog" autocomplete="off" aria-describedby="first-help" aria-autocomplete="list" aria-controls="first-suggestions" aria-expanded="false" role="combobox" required>
+                <ul id="first-suggestions" class="animal-suggestions" role="listbox" hidden></ul>
+              </div>
+              <p id="first-help">Search more than 60 animals with reference masses.</p>
+            </div>
+            <span class="versus" aria-hidden="true">VS</span>
+            <div class="selector-block">
+              <label for="second">ANIMAL 02</label>
+              <div class="animal-search-wrap">
+                <input id="second" class="animal-search" name="second" type="text" placeholder="Search the catalog, e.g. cat" autocomplete="off" aria-describedby="second-help" aria-autocomplete="list" aria-controls="second-suggestions" aria-expanded="false" role="combobox" required>
+                <ul id="second-suggestions" class="animal-suggestions" role="listbox" hidden></ul>
+              </div>
+              <p id="second-help">Choose another animal with a reference mass.</p>
+            </div>
+          </div>
+          <div class="form-actions">
+            <button id="swap" class="swap-button" type="button" aria-label="Swap animals">⇄ <span>Swap</span></button>
+            <button id="submit" class="compare-button" type="submit">Compare Animals <span aria-hidden="true">↗</span></button>
+          </div>
+        </form>
+        <p id="message" class="message" role="status" aria-live="polite"></p>
+      </section>
+
+      <section id="result" class="result-section" aria-live="polite" hidden>
+        <div class="result-kicker"><span class="dot"></span> MATCH RESULT</div>
+        <h2 id="result-title"></h2>
+        <p id="result-detail" class="result-detail"></p>
+        <div class="animal-cards" id="animal-cards"></div>
+        <p class="method-note">Calculation: heavier reference mass ÷ lighter reference mass. Masses are educational approximations; iNaturalist provides species information and photos. This comparison does not measure strength.</p>
+      </section>
+
+      <section class="popular-section" aria-labelledby="popular-title">
+        <div class="popular-heading">
+          <div>
+            <p class="eyebrow">COMMUNITY FIELD DATA</p>
+            <h2 id="popular-title">Most Searched Matchups</h2>
+          </div>
+          <p class="popular-note">Updated after every completed comparison.</p>
+        </div>
+        <ol id="popular-list" class="popular-list" aria-live="polite">
+          <li class="popular-empty">Loading community matchups…</li>
+        </ol>
+      </section>
+    </main>
+
+    <footer>
+      <span>ANIMAL VS</span>
+      <p>Animal data via <a href="https://www.inaturalist.org/" target="_blank" rel="noopener noreferrer">iNaturalist</a> · A wildlife curiosity experiment.</p>
+    </footer>
+  </div>
+</body>
+</html>
